@@ -1,16 +1,17 @@
 import React from 'react';
 import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({ cartCount, resetCartCount, showWelcome = true }) => {
     return (
         <nav>
-            <div className="logo">¡Bienvenido a Fish&CO!</div>
+            {showWelcome && <div className="logo">¡Bienvenido a Fish&CO!</div>}
             <ul className='all-links'>  
-                <li><a href="/home" className="navbar-link">Inicio</a></li>
-                <li><a href="/productos" className="navbar-link">Productos</a></li>
-                <li><a href="/contacto" className="navbar-link">Contacto</a></li>
+                <li><Link to="/" className="navbar-link">Inicio</Link></li>
+                <li><Link to="/productos" className="navbar-link">Productos</Link></li>
+                <li><Link to="/contacto" className="navbar-link">Contacto</Link></li>
             </ul>
-            <CartWidget />
+            <CartWidget cartCount={cartCount} resetCartCount={resetCartCount} />
         </nav>
     );
 };
